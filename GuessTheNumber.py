@@ -52,7 +52,7 @@ class Game ():
 
     def comparingNumbers(Self, possibleNum):
         if( Self.theNumber == possibleNum):
-            op = input(("You got it! Do want restart a new game?(digit 'y' for 'yes' or 'n' for 'no'."))
+            op = input(("You got it! Do you want start a new game?(digit 'y' for 'yes' or 'n' for 'no'.): "))
             if (op == 'y'):
                 Self.restartingAux()
             else:
