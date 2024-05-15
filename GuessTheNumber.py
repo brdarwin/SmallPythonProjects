@@ -15,8 +15,8 @@ class Game ():
     def instructionsMenu (Self):
         print ("\n\nInstructions:")
         print ("You have {} attempt(s) to guess the {} digit(s) number.You'll receive clues, if you find some digit.".format(Self.numAtempts, Self.numDigits))
-        print ("Digit 'help' for instructions.\nDigit 'restart' to restart the game.")
-        print ("Digit 'edit' to change the game's standards.\nDigit 'quit' to exit the game.\n\n")
+        print ("Type 'help' for instructions.\n Type 'restart' to restart the game.")
+        print ("Type 'edit' to change the game's standards.\nType 'quit' to exit the game.\n\n")
 
     def restartGame(Self):
         Self.atemptsLeft = Self.numAtempts
