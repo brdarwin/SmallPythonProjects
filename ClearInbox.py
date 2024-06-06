@@ -1,41 +1,95 @@
-import pyautogui as pygui
+import pyautogui as pyg
 import time
 import os
-pygui.FAILSAFE = False
-pygui.click(x=35, y=10)
-time.sleep(1)
-pygui.moveTo(x=868, y=1037, duration=1)
-time.sleep(1)
-pygui.drag(+424, -491,duration=1)
-time.sleep(10)
-pygui.click(x=1292, y=546)
-time.sleep(2)
 
-#proton:
-pygui.click(x=134, y=132)
-time.sleep(60)
-pygui.click(x=953, y=660)
-time.sleep(60)
-pygui.click(x=338, y=287)
-time.sleep(3)
-pygui.click(x=478, y=289)
-time.sleep(30)
+def clickingArea(imgPath):
+    try:
+        img  = pyg.locateOnScreen(imgPath)
+        xAxis = int (img[0] + (img[2] / 2))
+        yAxis = int (img[1] + (img[3] / 2))
+        pyg.click(xAxis, yAxis)
+    except pyg.ImageNotFoundException:
+        pass
+        
+        
+        
+        
+def searchingPage (theLink):
+    clickingArea("OpenPage.png")
+    time.sleep(3)
+    clickingArea("ExitPage.png")
+    pyg.typewrite(theLink)
+    time.sleep(1)
+    pyg.hotkey("Enter")
+    
 
-#gmail:
-pygui.click(x=250, y=133)
-time.sleep(5)
-pygui.click(x=1796, y=183)
-time.sleep(5)
-pygui.click(x=1125, y=564)
-pygui.click(x=1392, y=714)
-time.sleep(5)
-pygui.click(x=1392, y=714)
-time.sleep(10)
-pygui.click(x=1668, y=185)
-time.sleep(60)
-pygui.click(x=352, y=234)
-time.sleep(3)
-pygui.click(x=505, y=234)
-time.sleep(10)
+def main():
+    time.sleep(5)
+    pyg.FAILSAFE = False
+    clickingArea("TopLeft.png")
+    time.sleep(1)
+    clickingArea("FireFox.png")
+    time.sleep(10)
+    
+    
+    #Proton:
+    searchingPage("https://account.proton.me/login")
+    time.sleep(15)
+    pyg.hotkey("Enter")
+    time.sleep(20)
+    clickingArea("ProtonMail.png")
+    time.sleep(15)
+    clickingArea("SelectAll.png")
+    time.sleep(1)
+    pyg.hotkey("t")
+    
+    #Gmail:
+    searchingPage("https://www.google.com/")
+    time.sleep(20)
+    clickingArea("GLogin.png")
+    time.sleep(5)
+    pyg.typewrite("bdarwin@acad.ifma.edu.br")
+    time.sleep(3)
+    pyg.hotkey("Enter")
+    time.sleep(3)
+    pyg.hotkey("Enter")
+    time.sleep(5)
+    clickingArea("EnterGmail.png")
+    time.sleep(45)
+    clickingArea("SelectAllGml.png")
+    time.sleep(10)
+    clickingArea("RubIcon.png")
+    time.sleep(10)
 
+    #Gpt:
+    searchingPage("https://chatgpt.com/?oai-dm=1")
+    time.sleep(10)
+    clickingArea("LogGpt.png")
+    clickingArea("LogGpt.png")
+    time.sleep(5)
+    pyg.typewrite("brndarwin@proton.me")
+    time.sleep(1)
+    pyg.hotkey("Enter")
+    time.sleep(5)
+    pyg.hotkey("Enter")
+    time.sleep(10)
+    clickingArea("Profile.png")
+    time.sleep(2)
+    clickingArea("Settings.png")
+    time.sleep(2)
+    clickingArea("DeleteAll.png")
+    time.sleep(2)
+    clickingArea("ConfirmDelection.png")
+    '''
+    Stopped Here
+    #Outlook:
+    searchingPage("https://outlook.live.com/mail/0/")
+    time.sleep(10)
+    clickingArea("SignIn.png")
+    time.sleep(5)
+    for i in range (0,3):
+        pyg.hotkey("Enter")
+        time.sleep(3)
+    '''
 
+main()
