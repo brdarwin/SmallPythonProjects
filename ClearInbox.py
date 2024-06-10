@@ -4,7 +4,7 @@ import os
 
 
 def checkImage(imgPath, op):
-    for i in range (0, 9):
+    for i in range (0, 60):
         try:
             img  = pyg.locateOnScreen(imgPath)
             if op == 0:
@@ -17,12 +17,11 @@ def checkImage(imgPath, op):
                 pass
             break
         except pyg.ImageNotFoundException:
-            time.sleep(5)
-    time.sleep(3)
+            time.sleep(1)
+    
 
 def searchingPage(theLink):
     checkImage("OpenPage.png", 1)
-    time.sleep(3)
     checkImage("ExitPage.png", 1)
     pyg.typewrite(theLink)
     time.sleep(1)
@@ -32,7 +31,6 @@ def main():
     time.sleep(5)
     pyg.FAILSAFE = False
     checkImage("TopLeft.png", 1)
-    time.sleep(1)
     checkImage("FireFox.png", 1)
     
     
@@ -42,17 +40,18 @@ def main():
     checkImage("ProtonMail.png", 1)
     checkImage("SelectAll.png", 1)
     pyg.hotkey("t")
-    
+    checkImage("EmptyProton.png", 2)
     
     #Gmail:
     searchingPage("https://www.google.com/")
     checkImage("GLogin.png", 1)
-    pyg.typewrite("bdarwin@acad.ifma.edu.br")
+    checkImage("bmail.png", 1)
     checkImage("EnterGoo.png", 0)
     checkImage("EnterGoo.png", 0)
     checkImage("EnterGmail.png", 1)
     checkImage("SelectAllGml.png", 1)
     checkImage("RubIcon.png", 1)
+    checkImage("EmptyGmail.png", 2)
 
     
     #Gpt:
@@ -67,6 +66,7 @@ def main():
     checkImage("Settings.png", 1)
     checkImage("DeleteAll.png", 1)
     checkImage("ConfirmDelection.png", 1)
+    checkImage("EmptyGpt.png", 2)
     
     
     #Outlook:
@@ -78,8 +78,12 @@ def main():
     checkImage("Select.png", 1) 
     checkImage("SelectAllOut.png", 1)
     pyg.hotkey("Delete")
-    checkImage("Yep.png", 1)
+    time.sleep(3)
+    pyg.hotkey("Enter")
+    checkImage("EmptyOutlook.png", 2)
+    checkImage("ExitPage.png", 1)
     
-    
+    checkImage("ExitPage.png", 1)
+    print("Done")
 
 main()
