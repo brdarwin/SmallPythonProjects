@@ -44,7 +44,7 @@ def main():
     
     #Gmail:
     searchingPage("https://www.google.com/")
-    checkImage("GLogin.png", 1)
+    checkImage("GLog.png", 1)
     checkImage("bmail.png", 1)
     checkImage("EnterGoo.png", 0)
     checkImage("EnterGoo.png", 0)
@@ -53,7 +53,6 @@ def main():
     checkImage("RubIcon.png", 1)
     checkImage("EmptyGmail.png", 2)
 
-    
     #Gpt:
     searchingPage("https://chatgpt.com/?oai-dm=1")
     checkImage("LogGpt.png", 1)
